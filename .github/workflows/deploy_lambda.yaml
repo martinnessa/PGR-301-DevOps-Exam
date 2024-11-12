@@ -24,6 +24,7 @@ jobs:
 
       - name: Build Lambda function
         run: |
+          cd mane041-image-generation/
           sam build -t template.yaml
 
       - name: Deploy to AWS
