@@ -23,10 +23,11 @@ jobs:
           aws-region: eu-west-1
 
       - name: Build Lambda function
+        working-directory: ./mane041-image-generation/
         run: |
-          cd mane041-image-generation/
           sam build -t template.yaml
 
       - name: Deploy to AWS
+        working-directory: ./mane041-image-generation/
         run: |
           sam deploy --config-file samconfig.toml
