@@ -22,6 +22,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
 
+      - name: Prepare python
+        uses: actions/setup-python@v3
+
       - name: Build Lambda function
         working-directory: ./mane041-image-generation/
         run: |
