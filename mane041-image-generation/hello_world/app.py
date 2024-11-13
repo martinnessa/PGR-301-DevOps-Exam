@@ -16,9 +16,10 @@ def lambda_handler(event, context):
     # Define the model ID and S3 bucket name (replace with your actual bucket name)
     model_id = "amazon.titan-image-generator-v1"
     bucket_name = os.environ["bucket_name"]
+    candidate_number = os.environ["candidate_number"]
 
     seed = random.randint(0, 2147483647)
-    s3_image_path = f"17/generated_images/titan_{seed}.png"
+    s3_image_path = f"{candidate_number}/generated_images/titan_{seed}.png"
 
     native_request = {
         "taskType": "TEXT_IMAGE",

@@ -28,6 +28,7 @@ Resources:
       Environment:
         Variables:
             bucket_name: "pgr301-couch-explorers"
+            candidate_number: "17"
       Policies:
         - Version: "2012-10-17"
           Statement:
