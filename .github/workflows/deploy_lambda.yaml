@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'mane041-image-generation/**'
+      - '../../oppgave1/**'
 
 jobs:
   deploy:
@@ -26,11 +26,11 @@ jobs:
         uses: actions/setup-python@v3
 
       - name: Build Lambda function
-        working-directory: ./mane041-image-generation/
+        working-directory: ./oppgave1/
         run: |
           sam build -t template.yaml
 
       - name: Deploy to AWS
-        working-directory: ./mane041-image-generation/
+        working-directory: ./oppgave1/
         run: |
           sam deploy --config-file samconfig.toml
