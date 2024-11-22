@@ -20,7 +20,7 @@ provider "aws" {
 }
 
 resource "aws_lambda_function" "mane041_sqs_image_generation" {
-  filename      = "lambda_sqs.py"
+  filename      = "../lambda_sqs.py"
   function_name = "mane041_sqs_image_generation"
   runtime       = "python3.12"
   role          = "aws_iam_role.mane041_lambda_role.arn"
