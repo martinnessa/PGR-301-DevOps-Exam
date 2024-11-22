@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - './oppgave1/mane041-image-generation/**'
+      - 'oppgave1/mane041-image-generation/**'
 
 jobs:
   deploy:
