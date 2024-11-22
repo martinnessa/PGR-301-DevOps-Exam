@@ -81,6 +81,7 @@ cmake-build-debug/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+.idea/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
@@ -243,4 +244,3 @@ oppgave1/mane041-image-generation/.aws-sam/build/template.yaml
 
 # End of https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
 oppgave2/infra/.terraform
-oppgave2/.terraform

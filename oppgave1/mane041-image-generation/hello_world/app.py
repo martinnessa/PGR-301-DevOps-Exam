@@ -8,7 +8,7 @@ import random
 def lambda_handler(event, context):
 
     body = json.loads(event["body"])
-    prompt = body["prompt"]
+    prompt = body.get("prompt")
 
     bedrock_client = boto3.client("bedrock-runtime", region_name="us-east-1")
     s3_client = boto3.client("s3")
