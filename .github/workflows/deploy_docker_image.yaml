@@ -27,7 +27,7 @@ jobs:
         with:
           context: ./oppgave3/java_sqs_client
           push: true
-          tags: martinnessa/DevOpsExam:latest
+          tags: martinnessa/devopsexam:latest-ubuntu
 
       - name: Build and push experimental
         if: github.ref != 'refs/heads/main'
@@ -35,4 +35,4 @@ jobs:
         with:
           context: ./oppgave3/java_sqs_client
           push: true
-          tags: martinnessa/DevOpsExam:latest-experimental
+          tags: martinnessa/devopsexam:latest-experimental-ubuntu
