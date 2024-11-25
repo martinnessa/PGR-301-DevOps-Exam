@@ -8,7 +8,7 @@ on:
 
 jobs:
   terraform-plan:
-    if: github.head_ref == 'planning'
+    if: github.ref == 'refs/heads/planning'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -33,7 +33,7 @@ jobs:
         run: terraform plan -no-color
 
   terraform-apply:
-    if: github.head_ref == 'main'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
