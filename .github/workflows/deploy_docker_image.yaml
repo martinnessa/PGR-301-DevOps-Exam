@@ -2,8 +2,6 @@ name: Deploy to DockerHub
 on:
   workflow_dispatch:
   push:
-    branches:
-      - *
 jobs:
   publish-to-docker-hub:
     runs-on: ubuntu-latest
