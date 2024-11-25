@@ -115,3 +115,31 @@ data "archive_file" "archive_lambda_function" {
   source_file = "${path.module}/../lambda_sqs.py"
   output_path = "${path.module}/../function.zip"
 }
+
+resource "aws_cloudwatch_metric_alarm" "mane041_sqs_oldest_message_alarm" {
+  alarm_name          = "mane041-old-message-alarm"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 1
+  threshold           = 360
+  period              = 60
+  metric_name         = "ApproximateAgeOfOldestMessage"
+  statistic           = "Maximum"
+  alarm_actions       = [aws_sns_topic.mane041_sqs_alarm_topic.arn]
+  dimensions = {
+    QueueName = aws_sqs_queue.mane041_sqs_queue.name
+  }
+}
+
+resource "aws_sns_topic_subscription" "sqs_alarm_email" {
+  topic_arn = aws_sns_topic.mane041_sqs_alarm_topic.arn
+  protocol  = "email"
+  endpoint  = var.alert_email
+}
+
+resource "aws_sns_topic" "mane041_sqs_alarm_topic" {
+  name = "mane041-sqs-alarm-topic"
+}
+
+variable "alert_email" {
+  type = string
+}
