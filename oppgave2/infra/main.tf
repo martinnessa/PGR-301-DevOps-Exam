@@ -25,13 +25,12 @@ resource "aws_lambda_function" "mane041_sqs_image_generation" {
   runtime       = "python3.12"
   role          = aws_iam_role.mane041_lambda_role.arn
   timeout       = 45
-  handler       = "mane041_sqs_image_generation.lambda_handler"
+  handler       = "lambda_sqs.lambda_handler"
 
   environment {
     variables = {
       BUCKET_NAME      = "pgr301-couch-explorers"
       CANDIDATE_NUMBER = "17"
-      Version          = "This is a planning branch"
     }
   }
 }
@@ -73,12 +72,15 @@ resource "aws_iam_policy" "mane_041_lambda_policy" {
           "s3:PutObject",
           "s3:GetObject"
         ]
-        Resource = "arn:aws:s3:::pgr301-couch-explorers"
+        Resource = [
+          "arn:aws:s3:::pgr301-couch-explorers",
+          "arn:aws:s3:::pgr301-couch-explorers/*"
+        ]
       },
       {
         Effect   = "Allow"
         Action   = "bedrock:InvokeModel"
-        Resource = "arn:aws:bedrock:us-east-1"
+        Resource = "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-image-generator-v1"
       },
       {
         Effect = "Allow",
@@ -89,6 +91,15 @@ resource "aws_iam_policy" "mane_041_lambda_policy" {
           "sqs:GetQueueUrl"
         ]
         Resource = aws_sqs_queue.mane041_sqs_queue.arn
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+        Resource = "arn:aws:logs:*:*:*"
       }
     ]
   })
