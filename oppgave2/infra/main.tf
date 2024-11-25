@@ -123,6 +123,7 @@ resource "aws_cloudwatch_metric_alarm" "mane041_sqs_oldest_message_alarm" {
   threshold           = 360
   period              = 60
   metric_name         = "ApproximateAgeOfOldestMessage"
+  namespace = "AWS/SQS"
   statistic           = "Maximum"
   alarm_actions       = [aws_sns_topic.mane041_sqs_alarm_topic.arn]
   dimensions = {
