@@ -12,13 +12,11 @@ https://github.com/martinnessa/PGR-301-DevOps-Exam/actions/runs/12017906332/job/
 
 Terraform plan pipeline:  https://github.com/martinnessa/PGR-301-DevOps-Exam/actions/runs/12018072513/job/33501766247
 
-SQS queue: 
+SQS queue: https://sqs.eu-west-1.amazonaws.com/244530008913/mane041_sqs_queue
 
  ### Oppgave 3:
+Docker image: martinnessa/devopsexam  
+SQS queue: https://sqs.eu-west-1.amazonaws.com/244530008913/mane041_sqs_queue  
 
-A:  
-```
-cd oppgave3/java_sqs_client
-docker build -t oppgave3:latest
-```
- 
+#### Tagging strategi:
+Min plan for tagging var at den nyeste releasen blir deployet ved push på main og tagges som latest-linux-corretto17 siden containeren kjøres i en linux container og bruker Corretto 17.
