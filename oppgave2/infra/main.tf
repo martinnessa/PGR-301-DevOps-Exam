@@ -31,6 +31,7 @@ resource "aws_lambda_function" "mane041_sqs_image_generation" {
     variables = {
       BUCKET_NAME      = "pgr301-couch-explorers"
       CANDIDATE_NUMBER = "17"
+      Version          = "This is a planning branch"
     }
   }
 }
