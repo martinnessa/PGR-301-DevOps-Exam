@@ -27,10 +27,14 @@ jobs:
           terraform_version: "1.9.0"
 
       - name: Terraform Init
+        env:
+          TF_VAR_ALERT_EMAIL: ${{ secrets.TF_VAR_ALERT_EMAIL }}
         working-directory: ./oppgave2/infra/
         run: terraform init
 
       - name: Terraform plan
+        env:
+          TF_VAR_ALERT_EMAIL: ${{ secrets.TF_VAR_ALERT_EMAIL }}
         working-directory: ./oppgave2/infra/
         run: terraform plan -no-color
 

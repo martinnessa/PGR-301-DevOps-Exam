@@ -30,6 +30,9 @@ SQS queue: https://sqs.eu-west-1.amazonaws.com/244530008913/mane041_sqs_queue
 Min plan for tagging var at den nyeste releasen blir deployet ved push på main og tagges som latest-linux-corretto17 siden containeren kjøres i en linux container og bruker Corretto 17.
 
 ### Oppgave 4:  
+Koden ligger i /oppgave2/infra/main.tf
+
+![](img/alert.png "Image")
 
 ### Oppgave 5:  
 1. 
