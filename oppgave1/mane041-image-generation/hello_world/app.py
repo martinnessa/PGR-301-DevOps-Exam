@@ -8,7 +8,17 @@ import random
 def lambda_handler(event, context):
 
     body = json.loads(event["body"])
-    prompt = body.get("prompt")
+    prompt = body.get("prompt", "")
+
+    if not prompt:
+        return {
+            "statusCode": 400,
+            "headers": {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "body": json.dumps({"error": "Prompt is required"})
+        }
 
     bedrock_client = boto3.client("bedrock-runtime", region_name="us-east-1")
     s3_client = boto3.client("s3")

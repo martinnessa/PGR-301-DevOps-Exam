@@ -33,8 +33,6 @@ jobs:
         run: terraform init
 
       - name: Terraform plan
-        env:
-          TF_VAR_ALERT_EMAIL: ${{ secrets.TF_VAR_ALERT_EMAIL }}
         working-directory: ./oppgave2/infra/
         run: terraform plan -no-color
 
@@ -64,7 +62,5 @@ jobs:
         run: terraform init
 
       - name: Terraform Apply
-        env:
-          TF_VAR_ALERT_EMAIL: ${{ secrets.TF_VAR_ALERT_EMAIL }}
         working-directory: ./oppgave2/infra/
         run: terraform apply -auto-approve -no-color
